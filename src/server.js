@@ -14,7 +14,8 @@ const CATALOG_SELECT = `
   SELECT racket_id, source_id, manufacturer, name, head_size, length,
          weight_oz, weight_g, balance_pts, balance_type, balance_mm,
          swingweight, stiffness, beam_width, power_level, string_pattern,
-         tension, composition_clean, main_skip_clean, image_url
+         tension, composition_clean, main_skip_clean,
+         thumb_url, full_url, source_image_url
   FROM racket_catalog`;
 
 app.get('/health', (_, res) => res.json({ status: 'ok' }));

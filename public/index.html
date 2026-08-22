@@ -121,10 +121,12 @@ function renderResults(rackets) {
     resultsEl.innerHTML = '';
     return;
   }
-  resultsEl.innerHTML = rackets.map((r) => `
+  resultsEl.innerHTML = rackets.map((r) => {
+    const img = r.thumb_url || r.source_image_url;
+    return `
     <div class="card">
-      <div class="photo${r.image_url ? '' : ' empty'}">
-        ${r.image_url ? `<img src="${r.image_url}" alt="${r.name}" loading="lazy">` : 'No image'}
+      <div class="photo${img ? '' : ' empty'}">
+        ${img ? `<img src="${img}" alt="${r.name}" loading="lazy">` : 'No image'}
       </div>
       <div class="body">
         <h2>${r.name}</h2>
@@ -137,7 +139,8 @@ function renderResults(rackets) {
             </div>`).join('')}
         </div>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 }
 
 async function fetchSuggestions(q) {
