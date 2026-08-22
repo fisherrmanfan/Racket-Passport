@@ -1,12 +1,14 @@
 'use strict';
 
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const cors = require('cors');
 const { pool } = require('./db');
 
 const app = express();
 app.use(cors());
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 const CATALOG_SELECT = `
   SELECT racket_id, source_id, manufacturer, name, head_size, length,
