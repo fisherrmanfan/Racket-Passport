@@ -64,12 +64,16 @@ guess.
 
 ```
 app/
-  page.tsx                      Today — the stringer console
+  (marketing)/page.tsx          /     — front door, picks a surface
+  (stringer)/app/page.tsx       /app  — the bench console
+  (player)/my/page.tsx          /my   — the player's rackets
   api/v1/catalog/rackets/       Catalogue endpoints (BACKEND §6)
   api/v1/health/
   dev/meter/                    String bed meter harness, every size × state
 components/
   console/                      Today screen, job rows, the new-job sheet
+  player/                       My rackets
+  shell/                        Console frame, surface switcher
   domain/                       StringBedMeter, TensionPair, RacketCombobox
   ui/                           shadcn primitives
 lib/
@@ -86,6 +90,20 @@ legacy/                         The original Express API + its test UI
 migrations/                     pg_trgm + autocomplete index
 info/                           The source archives
 ```
+
+## Surfaces
+
+The wireframe treats these as three different products sharing a codebase
+(FRONTEND §1.1), and they're styled that way — the dark bench palette is scoped
+to `.console` so the player and public surfaces stay on paper.
+
+| Route | Who | Shape |
+|---|---|---|
+| `/` | Anyone | Front door. Until there's auth, this is also where you pick a surface. |
+| `/app` | Stringer | Dark, dense, tablet-first. One column on a phone, two on an iPad, three on a laptop. |
+| `/my` | Player | Paper, calm, phone-first. Stays a single readable column on desktop — a bag holds a handful of rackets, not a dashboard. |
+
+Both surfaces are reachable from the header at every width, and from `/`.
 
 ## What is still fixtures
 
@@ -111,7 +129,10 @@ every seeded tennis job trips the catalogue's real lb guardrail.
 
 ## Not built yet
 
-The wireframe's other surfaces — the player portal (`/my`), the public passport
-page (`/r/[shortCode]`), the recommendation wizard, QR scanning, label printing
-and the due-this-week queue — are specified but not implemented. `/` currently
-serves the console directly rather than a marketing page.
+The public passport page (`/r/[shortCode]`) — the QR destination, and the
+wireframe's top-of-funnel — is not built yet, nor are the recommendation
+wizard, QR scanning, label printing, or the due-this-week review queue.
+
+`/my` shows one hardcoded player (`PLAYER_ID` in `components/player/my-rackets.tsx`)
+because there's no session yet, and its "Request restring" button doesn't
+submit anywhere.
