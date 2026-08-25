@@ -17,3 +17,6 @@ info/racket-passport/
 
 # TypeScript incremental build cache
 *.tsbuildinfo
+
+# graphify knowledge-graph output (regenerate with /graphify)
+graphify-out/
