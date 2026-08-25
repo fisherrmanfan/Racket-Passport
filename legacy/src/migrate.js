@@ -6,7 +6,9 @@ const path = require('path');
 const { pool } = require('./db');
 
 async function main() {
-  const dir = path.join(__dirname, '..', 'migrations');
+  // migrations/ stayed at the repo root when this script moved into legacy/ —
+  // the Next.js route handlers depend on the same pg_trgm index.
+  const dir = path.join(__dirname, '..', '..', 'migrations');
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
   for (const file of files) {
     console.log(`Running ${file}...`);
