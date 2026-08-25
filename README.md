@@ -99,7 +99,7 @@ to `.console` so the player and public surfaces stay on paper.
 
 | Route | Who | Shape |
 |---|---|---|
-| `/` | Anyone | Front door. Until there's auth, this is also where you pick a surface. |
+| `/` | Anyone | Marketing home — hero, the string bed meter's four states, what each side gets, pricing. Until there's auth, also where you pick a surface. |
 | `/app` | Stringer | Dark, dense, tablet-first. One column on a phone, two on an iPad, three on a laptop. |
 | `/my` | Player | Paper, calm, phone-first. Stays a single readable column on desktop — a bag holds a handful of rackets, not a dashboard. |
 
@@ -129,9 +129,15 @@ every seeded tennis job trips the catalogue's real lb guardrail.
 
 ## Not built yet
 
+**There is no authentication.** `/login` does not exist, and neither does any
+session. The spec (BACKEND §5) says not to build this yourself — it wants
+passwordless phone OTP or a magic link via Supabase Auth or Clerk — so it needs
+a provider account before it can be wired.
+
 The public passport page (`/r/[shortCode]`) — the QR destination, and the
-wireframe's top-of-funnel — is not built yet, nor are the recommendation
-wizard, QR scanning, label printing, or the due-this-week review queue.
+wireframe's top-of-funnel — is not built yet, nor are `/find-your-setup`, the
+recommendation wizard, QR scanning, label printing, or the due-this-week
+review queue.
 
 `/my` shows one hardcoded player (`PLAYER_ID` in `components/player/my-rackets.tsx`)
 because there's no session yet, and its "Request restring" button doesn't
