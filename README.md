@@ -7,8 +7,8 @@ Three sources were merged into this repo:
 
 | Source | What it was | Where it went |
 |---|---|---|
-| `info/files.zip` | The three-part wireframe (`MASTER`, `FRONTEND`, `BACKEND`) | Reference. Section numbers are cited in code comments. |
-| `info/racket-passport.zip` | Next.js console prototype against fixtures | The app — `app/`, `components/`, `lib/` |
+| `info/files.zip` | The three-part wireframe (`MASTER`, `FRONTEND`, `BACKEND`) | Reference. Section numbers are cited in code comments. Kept — still the source of truth. |
+| `info/racket-passport.zip` | Next.js console prototype against fixtures | Fully merged into `app/`, `components/`, `lib/`; the archive itself was removed once nothing referenced it. |
 | This repo (previously) | Express read-API over `racket_catalog` with trigram autocomplete | Ported to route handlers under `app/api/v1/`; original kept in `legacy/` |
 
 The wireframe's BACKEND §1 is explicit that there is **no separate API
@@ -88,7 +88,8 @@ lib/
   mock-data.ts                  Fixtures: strings, customers, seed jobs
 legacy/                         The original Express API + its test UI
 migrations/                     pg_trgm + autocomplete index
-info/                           The source archives
+info/                           files.zip — the wireframe spec, cited by section number
+PROGRESS.md                     What's wired up vs. what's still open
 ```
 
 ## Surfaces
